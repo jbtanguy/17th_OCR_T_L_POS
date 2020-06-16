@@ -1,30 +1,35 @@
 #!/bin/sh
 
-#A global pipeline fo 17th c. documents: pdf -> ocr -> tokenization -> lemmatization -> POS-tagging
+#A global pipeline for 17th c. documents: pdf -> ocr -> tokenization -> lemmatization -> POS-tagging
 
-#Requirements
-#============
+#Requirements (Python 3)
+#=======================
 #torch==1.3.1
 #rchvision==0.4.2
-
+#
 #To do
 #=====
 #Create two virtual environments:
 #- ~/venc/kraken/ --> kraken 
 #- ~/venv/pie/ --> pie-extended
-
+#
 #Download these libraries:
 #- pdftoppm --> used to split a pdf into png images (unix system: sudo apt-get poppler-utils)
 #- kraken --> used to process the ocr (pip3 install kraken)
 #- pie-extended --> used to tokenizer, lemmatize and POS-tag OCR results (pip3 install pie-extended)
-
+#
 #Models used in this pipeline
 #============================
 #- OCR : Simon Gabay, Thibault Clérice, Christian Reul. OCR17: Ground Truth and Models for 17th c. French Prints (and hopefully more). 2020. ⟨hal-02577236⟩
 #- Lemmatizer : (Paper not accepted for now)  https://github.com/e-ditiones/LEM17/releases/tag/v0.1
 #- Tokenizer, POS-tagger and Morphogical Analyser : "fr" model downloaded by pie-extended module as follow: pip-extended download fr
-
+#
 #Please email me if you have something to tell about this work at jean-baptiste.tanguy@sorbonne-universite.fr.
+
+# GET STARTED
+# Make sure this global_pipeline.py is in a directory where there also is:
+# - remove_generated_images.py
+# - a directory called ./pdf/ with pdf files in it
 
 # 1. Preprocessings
 echo "1. Spliting PDF files into PNG images..."
